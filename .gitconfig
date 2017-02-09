@@ -1,0 +1,50 @@
+[user]
+	name = Noriaki Uchiyama
+	email = uchiyama.noriaki@gmail.com
+[color]
+	ui = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	log = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[core]
+	editor = emacs
+	pager = LESSCHARSET=utf-8 less
+	excludesfile = /Users/noriaki/.gitignore_global
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+
+	# http://blog.toshimaru.net/git-log-graph/
+	lg = log --graph --pretty='own' --abbrev-commit --date=relative
+	lga = log --graph --all --pretty='own' --abbrev-commit --date=relative
+
+	merge-nff = merge --no-ff
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[push]
+	default = simple
+[pretty]
+	own = format:%C(white dim)%h:%Creset%C(yellow reverse)%d%Creset %s %Cgreen(%cr) %C(blue bold dim)<%an>%Creset
+[commit]
+	template = /Users/noriaki/.stCommitMsg
