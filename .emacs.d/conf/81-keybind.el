@@ -19,7 +19,7 @@
 ;; C-TAB, C-S-TAB, to change buffer window
 ;; see: 11-split-window.el
 (global-set-key (kbd "C-TAB") 'other-window-or-split)
-(global-set-key (kbd "C-S-TAB") (lambda () (other-window -1)))
+(global-set-key (kbd "C-S-TAB") (lambda () (interactive) (other-window -1)))
 
 ;; C-x C-r to interactive mode change window size
 ;; see: 11-resize-window.el
