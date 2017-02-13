@@ -1,0 +1,79 @@
+# -*- mode: shell-script; -*-
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+
+
+# boxen
+#
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+[ -f /opt/boxen/nvm/nvm.sh ] && source /opt/boxen/nvm/nvm.sh
+
+
+# options
+#  http://kujira16.hateblo.jp/entry/2016/05/01/215542
+#
+setopt MAGIC_EQUAL_SUBST
+unsetopt CORRECT
+
+### modules/history/init.zsh ###
+HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
+HISTSIZE=100000 # 10000 is too small
+SAVEHIST=100000
+
+### modules/directory/init.zsh ###
+setopt MULTIOS              # Write to multiple descriptors.
+setopt EXTENDED_GLOB        # Use extended globbing syntax.
+
+
+# zsh-completions, git-flow-completions
+#
+fpath=($(brew --prefix)/share/zsh-completions $fpath)
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+fpath=(~/.zsh.d/completions $fpath)
+
+# paths
+#
+path=(~/.nodebrew/current/bin $path)
+path=(~/.anyenv/bin $path)
+
+# look and Feel
+#
+### Ls Color ###
+# 色の設定
+export LSCOLORS=Exfxcxdxbxegedabagacad
+# 補完時の色の設定
+_ZPREZTO_LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+zstyle ':completion:*:default' list-colors ${(s.:.)_ZPREZTO_LS_COLORS}
+
+# unbind keys
+#
+stty susp undef
+stty stop undef
+
+# tabtab source for yarn package
+# uninstall by removing these lines or running `tabtab uninstall yarn`
+[[ -f /Users/noriaki/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/noriaki/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
+
+# rbenv installed from homebrew
+eval "$(rbenv init -)"
+
+# anyenv installed from [github](https://github.com/riywo/anyenv)
+eval "$(anyenv init -)"
+
+# auto-load
+#
+autoload -U compinit
+compinit -u
+autoload -U colors
+colors
