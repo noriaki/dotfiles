@@ -19,7 +19,7 @@
 ;; C-TAB, C-S-TAB, to change buffer window
 ;; see: 11-split-window.el
 (global-set-key (kbd "C-TAB") 'other-window-or-split)
-(global-set-key (kbd "C-S-TAB") (lambda () (other-window -1)))
+(global-set-key (kbd "C-S-TAB") (lambda () (interactive) (other-window -1)))
 
 ;; C-x C-r to interactive mode change window size
 ;; see: 11-resize-window.el
@@ -30,14 +30,14 @@
 (global-unset-key (kbd "C-z"))
 
 ;; better dired-mode
-(require 'dired)
+;; (require 'dired) ; no `require` into 'init-loader
 ;; ファイル名だけの表示を可能に
 (define-key dired-mode-map (kbd "(") 'dired-hide-details-mode)
 (define-key dired-mode-map (kbd ")") 'dired-hide-details-mode)
 
 ;; 小さな dired-mode のウインドウを作る
 ;; C-x d, C-x C-d で開き C-g で閉じる。ウインドウ内ではファイル名のみ表示
-(require 'dired-toggle)
+;; (require 'dired-toggle) ; no `require` into 'init-loader
 (setq-default dired-toggle-window-size 30) ;; 幅を少し広く
 (global-set-key (kbd "C-x d") 'dired-toggle)
 (global-set-key (kbd "C-x C-d") 'dired-toggle)

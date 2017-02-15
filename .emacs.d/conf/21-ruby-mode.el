@@ -47,6 +47,6 @@
 (add-hook 'ruby-mode-hook 'noriaki/flycheck-ruby-mode-hooks)
 
 ;; ruby-block
-(require 'ruby-block)
+;; (require 'ruby-block) ; no `require` into 'init-loader
 (ruby-block-mode t)
 (setq ruby-block-highlight-toggle t)

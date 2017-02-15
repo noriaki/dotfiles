@@ -1,9 +1,9 @@
-(require 'auto-complete)
+;; (require 'auto-complete) ; no `require` into 'init-loader
 
 ;; 辞書追加
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 
-(require 'auto-complete-config)
+;; (require 'auto-complete-config) ; no `require` into 'init-loader
 
 (ac-config-default)
 (setq ac-use-menu-map t) ; C-n/C-pで補完候補を選択できる
@@ -37,6 +37,7 @@
 (add-to-list 'ac-modes 'json-mode)
 (add-to-list 'ac-modes 'js2-mode)
 (add-to-list 'ac-modes 'js2-jsx-mode)
+(add-to-list 'ac-modes 'rjsx-mode)
 (add-to-list 'ac-modes 'web-mode)
 (add-to-list 'ac-modes 'scss-mode)
 
