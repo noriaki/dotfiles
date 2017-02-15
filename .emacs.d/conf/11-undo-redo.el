@@ -1,5 +1,5 @@
 ;; redo+
-;; (require 'redo+) ; no `require` into 'init-loader
+(require 'redo+)
 (global-set-key (kbd "C-?") 'redo)
 
 ;; 過去のundoをredoしない
