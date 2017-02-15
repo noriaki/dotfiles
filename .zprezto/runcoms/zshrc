@@ -44,16 +44,33 @@ fpath=(~/.zsh.d/completions $fpath)
 
 # paths
 #
+path=($(brew --prefix)/opt/coreutils/libexec/gnubin $path)
 path=(~/.nodebrew/current/bin $path)
 path=(~/.anyenv/bin $path)
 
+# manpath
+#
+manpath=($manpath /usr/share/man)
+manpath=($(brew --prefix)/opt/coreutils/libexec/gnuman $manpath)
+
+# aliases
+#
+
 # look and Feel
 #
+
 ### Ls Color ###
-# 色の設定
-export LSCOLORS=Exfxcxdxbxegedabagacad
-# 補完時の色の設定
 _ZPREZTO_LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+# 色の設定
+if [ -d "$(brew --prefix)/opt/coreutils/libexec/gnubin" ] ; then
+    export LS_COLORS="$_ZPREZTO_LS_COLORS"
+    export ZLS_COLORS="$LS_COLORS"
+    alias ls='ls -G --color=auto'
+else
+    export LSCOLORS=Exfxcxdxbxegedabagacad
+    alias ls='ls -G'
+fi
+# 補完時の色の設定
 zstyle ':completion:*:default' list-colors ${(s.:.)_ZPREZTO_LS_COLORS}
 
 # unbind keys
