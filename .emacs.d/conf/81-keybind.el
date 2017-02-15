@@ -30,14 +30,14 @@
 (global-unset-key (kbd "C-z"))
 
 ;; better dired-mode
-;; (require 'dired) ; no `require` into 'init-loader
+(require 'dired)
 ;; ファイル名だけの表示を可能に
 (define-key dired-mode-map (kbd "(") 'dired-hide-details-mode)
 (define-key dired-mode-map (kbd ")") 'dired-hide-details-mode)
 
 ;; 小さな dired-mode のウインドウを作る
 ;; C-x d, C-x C-d で開き C-g で閉じる。ウインドウ内ではファイル名のみ表示
-;; (require 'dired-toggle) ; no `require` into 'init-loader
+(require 'dired-toggle)
 (setq-default dired-toggle-window-size 30) ;; 幅を少し広く
 (global-set-key (kbd "C-x d") 'dired-toggle)
 (global-set-key (kbd "C-x C-d") 'dired-toggle)
