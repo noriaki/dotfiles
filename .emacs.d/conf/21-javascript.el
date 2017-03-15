@@ -10,3 +10,9 @@
 ;; settings: conf/11-align.el
 (add-hook 'js2-mode-hook
           'noriaki/align-rules-list-for-javascript)
+
+;; electric-pair-mode: auto close bracket insertion
+(defun noriaki/electric-js2-mode-hook ()
+  "Auto close bracket insertion"
+  (electric-pair-mode t))
+(add-hook 'js2-mode-hook 'noriaki/electric-js2-mode-hook)

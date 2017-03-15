@@ -8,14 +8,6 @@
 (custom-set-faces
  '(default ((t (:background nil)))))
 
-;; 対応括弧をハイライト
-(show-paren-mode 1)
-
-;; 対応括弧の色設定
-(setq show-paren-style 'mixed)
-(set-face-background 'show-paren-match-face "grey")
-(set-face-foreground 'show-paren-match-face "black")
-
 ;; オープニングメッセージ非表示
 (setq inhibit-startup-message t)
 

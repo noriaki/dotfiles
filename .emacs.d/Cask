@@ -1,5 +1,3 @@
-;;; Need INSTALL
-;;;  see https://github.com/cask/cask
 (source gnu)
 (source marmalade)
 (source melpa)

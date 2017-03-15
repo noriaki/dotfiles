@@ -48,3 +48,5 @@
 	own = format:%C(white dim)%h:%Creset%C(yellow reverse)%d%Creset %s %Cgreen(%cr) %C(blue bold dim)<%an>%Creset
 [commit]
 	template = /Users/noriaki/.stCommitMsg
+[credential]
+	helper = osxkeychain
