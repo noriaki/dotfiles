@@ -28,3 +28,7 @@ shims_dir = "~/.local/share/mise/shims"
 # node = "lts"
 # python = "3.12"
 # ruby = "3.3"
+
+# Global npm packages (managed via npm backend)
+"npm:pnpm" = "latest"
+"npm:@anthropic-ai/claude-code" = "latest"
