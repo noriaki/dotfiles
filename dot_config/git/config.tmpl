@@ -1,0 +1,77 @@
+# Git configuration (XDG compliant: ~/.config/git/config)
+
+[init]
+	defaultBranch = main
+
+[user]
+	name = {{ .name }}
+	email = {{ .email }}
+	# Prevent Git from guessing user identity
+	useConfigOnly = true
+
+[core]
+	excludesFile = ~/.config/git/ignore
+	attributesFile = ~/.config/git/attributes
+	editor = code --wait
+	autocrlf = input
+	pager = less -R
+
+[pull]
+	rebase = false
+
+[push]
+	default = current
+	autoSetupRemote = true
+
+[fetch]
+	prune = true
+
+[diff]
+	colorMoved = default
+
+[merge]
+	conflictStyle = diff3
+
+{{- if .is_macos }}
+[credential]
+	helper = osxkeychain
+{{- else if .is_linux }}
+[credential]
+	helper = store
+{{- end }}
+
+[alias]
+	# Basic operations
+	st = status
+	br = branch
+	co = checkout
+	ci = commit
+	cm = commit -m
+	ca = commit --amend
+
+	# Log and history
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+
+	# Diff
+	df = diff
+	dfs = diff --staged
+
+	# Branch operations
+	bra = branch -a
+	brd = branch -d
+
+	# Remote operations
+	ps = push
+	pl = pull
+	ft = fetch
+
+	# Utilities
+	last = log -1 HEAD
+	unstage = reset HEAD --
+	undo = reset --soft HEAD^
+	amend = commit --amend --no-edit
+
+# Conditional includes for work/personal identity (example)
+# [includeIf "gitdir:~/work/"]
+#     path = ~/.config/git/work.gitconfig
