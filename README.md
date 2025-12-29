@@ -13,21 +13,72 @@ macOS / Linux (WSL2) 対応の dotfiles。[chezmoi](https://www.chezmoi.io/) で
 - Zsh (Zinit + Starship)
 - Git
 - Homebrew (Brewfile)
-- mise (Node.js, Python, Ruby)
+- mise (Node.js, Python, Ruby, pnpm, claude-code)
 - gh CLI
 
 ## インストール
 
+### ワンライナー（新規マシン）
+
 ```bash
-# Homebrew インストール後
+# macOS (Apple Silicon)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
+  eval "$(/opt/homebrew/bin/brew shellenv)" && \
+  brew install chezmoi && \
+  chezmoi init --apply noriaki && \
+  exec zsh
+
+# macOS (Intel)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
+  eval "$(/usr/local/bin/brew shellenv)" && \
+  brew install chezmoi && \
+  chezmoi init --apply noriaki && \
+  exec zsh
+
+# Linux (WSL2)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && \
+  brew install chezmoi && \
+  chezmoi init --apply noriaki && \
+  exec zsh
+```
+
+### 段階的セットアップ
+
+```bash
+# 1. Homebrew インストール
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# 2. Homebrew を PATH に追加（セッション用）
+eval "$(/opt/homebrew/bin/brew shellenv)"      # Apple Silicon
+# eval "$(/usr/local/bin/brew shellenv)"       # Intel Mac
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"  # Linux
+
+# 3. chezmoi インストール & 適用
 brew install chezmoi
 chezmoi init --apply noriaki
+
+# 4. シェル再起動
+exec zsh
 ```
 
 ## 更新
 
 ```bash
 chezmoi update
+```
+
+## 便利なコマンド
+
+```bash
+# 変更の確認（dry-run）
+chezmoi diff
+
+# ソースディレクトリを開く
+chezmoi cd
+
+# 設定の再適用
+chezmoi apply
 ```
 
 ## ライセンス
