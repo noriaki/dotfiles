@@ -1,0 +1,8 @@
+# npm configuration (XDG Base Directory compliant)
+# This file is managed by chezmoi
+
+# Cache directory
+cache=${XDG_CACHE_HOME}/npm
+
+# Global packages directory (used by `npm install -g`)
+prefix=${XDG_DATA_HOME}/npm

@@ -1,0 +1,255 @@
+# ============================================================================
+# starship.toml - Starship Prompt Configuration
+# ============================================================================
+# Cross-shell prompt with excellent performance
+# Documentation: https://starship.rs/config/
+# ============================================================================
+
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# ----------------------------------------------------------------------------
+# Prompt Format
+# ----------------------------------------------------------------------------
+# The overall structure of the prompt
+format = """
+[╭─](bold green)$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$python\
+$ruby\
+$rust\
+$golang\
+$docker_context\
+$package
+$line_break\
+[╰─](bold green)$character"""
+
+# ----------------------------------------------------------------------------
+# Core Modules
+# ----------------------------------------------------------------------------
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+vimcmd_symbol = "[⚡](bold yellow)"
+
+[directory]
+format = "[ $path]($style)[$read_only]($read_only_style) "
+style = "bold cyan"
+truncation_length = 3
+truncate_to_repo = true
+truncation_symbol = "…/"
+read_only = " 🔒"
+home_symbol = "~"
+
+# Special directory replacements
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Projects" = "󰲋 "
+
+# ----------------------------------------------------------------------------
+# Git Configuration
+# ----------------------------------------------------------------------------
+
+[git_branch]
+format = "on [$symbol$branch(:$remote_branch)]($style) "
+symbol = " "
+style = "bold purple"
+truncation_length = 20
+truncation_symbol = "…"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "bold red"
+conflicted = "🏳"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = ""
+untracked = "?${count}"
+stashed = "$${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
+
+[git_commit]
+format = '[\($hash$tag\)]($style) '
+style = "bold green"
+commit_hash_length = 7
+tag_symbol = " 🏷 "
+tag_disabled = false
+
+# ----------------------------------------------------------------------------
+# Language Version Indicators
+# ----------------------------------------------------------------------------
+
+[nodejs]
+format = "via [$symbol($version )]($style)"
+symbol = " "
+style = "bold green"
+detect_extensions = ["js", "mjs", "cjs", "ts", "mts", "cts"]
+detect_files = ["package.json", ".node-version", ".nvmrc"]
+detect_folders = ["node_modules"]
+
+[python]
+format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+symbol = " "
+style = "yellow bold"
+pyenv_version_name = false
+pyenv_prefix = "pyenv "
+python_binary = ["python3", "python"]
+detect_extensions = ["py"]
+detect_files = [".python-version", "Pipfile", "pyproject.toml", "requirements.txt"]
+detect_folders = []
+
+[ruby]
+format = "via [$symbol($version )]($style)"
+symbol = " "
+style = "bold red"
+detect_extensions = ["rb"]
+detect_files = ["Gemfile", ".ruby-version"]
+detect_folders = []
+detect_variables = []
+
+[rust]
+format = "via [$symbol($version )]($style)"
+symbol = " "
+style = "bold red"
+detect_extensions = ["rs"]
+detect_files = ["Cargo.toml"]
+
+[golang]
+format = "via [$symbol($version )]($style)"
+symbol = " "
+style = "bold cyan"
+detect_extensions = ["go"]
+detect_files = ["go.mod", "go.sum"]
+
+# ----------------------------------------------------------------------------
+# Package Version
+# ----------------------------------------------------------------------------
+
+[package]
+format = "is [$symbol$version]($style) "
+symbol = "📦 "
+style = "bold 208"
+display_private = false
+disabled = false
+
+# ----------------------------------------------------------------------------
+# Container Context
+# ----------------------------------------------------------------------------
+
+[docker_context]
+format = "via [$symbol$context]($style) "
+symbol = " "
+style = "blue bold"
+only_with_files = true
+detect_extensions = []
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+detect_folders = []
+
+# ----------------------------------------------------------------------------
+# Time Module
+# ----------------------------------------------------------------------------
+
+[time]
+format = "at [$time]($style) "
+style = "bold yellow"
+disabled = false
+time_format = "%T"
+utc_time_offset = "local"
+
+# ----------------------------------------------------------------------------
+# System Information
+# ----------------------------------------------------------------------------
+
+[username]
+format = "[$user]($style)"
+style_user = "bold yellow"
+style_root = "bold red"
+show_always = false
+disabled = false
+
+[hostname]
+format = "[@$hostname]($style) "
+style = "bold green"
+ssh_only = true
+disabled = false
+
+# ----------------------------------------------------------------------------
+# Command Duration
+# ----------------------------------------------------------------------------
+
+[cmd_duration]
+format = "took [$duration]($style) "
+min_time = 2_000
+style = "bold yellow"
+show_milliseconds = false
+disabled = false
+
+# ----------------------------------------------------------------------------
+# Status
+# ----------------------------------------------------------------------------
+
+[status]
+format = '[\[$symbol$status\]]($style) '
+symbol = "✖"
+style = "bold red"
+disabled = false
+
+# ----------------------------------------------------------------------------
+# Memory Usage
+# ----------------------------------------------------------------------------
+
+[memory_usage]
+format = "via $symbol[$ram( | $swap)]($style) "
+threshold = 75
+symbol = "🐏 "
+style = "bold dimmed white"
+disabled = true
+
+# ----------------------------------------------------------------------------
+# Battery
+# ----------------------------------------------------------------------------
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡"
+discharging_symbol = "💀"
+disabled = true
+
+[[battery.display]]
+threshold = 30
+style = "bold red"
+
+# ----------------------------------------------------------------------------
+# Additional Languages (Disabled by Default)
+# ----------------------------------------------------------------------------
+
+[java]
+disabled = true
+
+[php]
+disabled = true
+
+[kotlin]
+disabled = true
+
+[swift]
+disabled = true
+
+# ----------------------------------------------------------------------------
+# Line Break
+# ----------------------------------------------------------------------------
+
+[line_break]
+disabled = false

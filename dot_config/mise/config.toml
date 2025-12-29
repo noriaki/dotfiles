@@ -1,0 +1,30 @@
+# mise configuration
+# Location: ~/.config/mise/config.toml (XDG compliant)
+# Documentation: https://mise.jdx.dev/
+
+[settings]
+# Automatically install missing tools when entering a directory
+auto_install = true
+
+# Use verbose output
+verbose = false
+
+# Experimental features
+experimental = false
+
+# Trust all config files (set to false for stricter security)
+trusted_config_paths = ["~"]
+
+# Legacy version file support (.node-version, .ruby-version, etc.)
+legacy_version_file = true
+
+# Disable default shims in favor of mise activate
+shims_dir = "~/.local/share/mise/shims"
+
+[tools]
+# Default tool versions (can be overridden per-project with .mise.toml)
+# Uncomment and adjust versions as needed after initial setup
+
+# node = "lts"
+# python = "3.12"
+# ruby = "3.3"

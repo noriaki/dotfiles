@@ -1,0 +1,42 @@
+# GitHub CLI configuration
+# Location: ~/.config/gh/config.yml (XDG compliant)
+
+# Config schema version
+version: 1
+
+# Git protocol for operations (ssh or https)
+git_protocol: https
+
+# Editor for issues, PRs, etc. (blank = use $EDITOR)
+editor:
+
+# Interactive prompts (enabled or disabled)
+prompt: enabled
+
+# Prefer editor-based prompts
+prefer_editor_prompt: disabled
+
+# Pager for command output (blank = use $PAGER, "cat" = disable)
+pager:
+
+# Command aliases
+aliases:
+    co: pr checkout
+
+# Unix socket for HTTP connections (blank = default)
+http_unix_socket:
+
+# Web browser for URLs (blank = use $BROWSER)
+browser:
+
+# Display label colors using RGB hex (enabled or disabled)
+color_labels: disabled
+
+# Use 4-bit accessible colors
+accessible_colors: disabled
+
+# Use accessible prompter
+accessible_prompter: disabled
+
+# Use animated spinner progress indicator
+spinner: enabled
