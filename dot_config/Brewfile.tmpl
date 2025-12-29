@@ -1,0 +1,81 @@
+# Brewfile - Homebrew Bundle
+# Location: ~/.config/Brewfile (via HOMEBREW_BUNDLE_FILE)
+# Usage: brew bundle
+
+# =============================================================================
+# Formulae (CLI tools)
+# =============================================================================
+
+# Version manager (replaces anyenv)
+brew "mise"
+
+# Compression
+brew "xz"
+
+# Cloud
+brew "awscli"
+
+# Development tools
+brew "emscripten"
+brew "ffmpeg"
+brew "gh"
+brew "git"
+brew "git-flow"
+brew "groff"
+brew "pkgconf"
+brew "rust"
+brew "tig"
+brew "tree"
+brew "wabt"
+
+# Shell
+brew "starship"
+brew "zsh"
+
+{{- if .is_macos }}
+# macOS only
+brew "mas"
+{{- end }}
+
+{{- if .is_linux }}
+# Linux only
+brew "xclip"
+{{- end }}
+
+# =============================================================================
+# Casks (GUI applications) - macOS only
+# =============================================================================
+{{- if .is_macos }}
+
+# Utilities
+cask "alt-tab"
+cask "karabiner-elements"
+cask "linearmouse"
+cask "maccy"
+
+# Development
+cask "iterm2"
+cask "visual-studio-code"
+cask "ngrok"
+
+# AI
+cask "chatgpt"
+cask "claude"
+
+# Productivity
+cask "google-drive"
+cask "miro"
+cask "smoothcsv"
+
+# Fonts
+cask "font-plemol-jp-nf"
+{{- end }}
+
+# =============================================================================
+# Mac App Store - macOS only
+# =============================================================================
+{{- if .is_macos }}
+
+mas "Amphetamine", id: 937984704
+mas "Xcode", id: 497799835
+{{- end }}
