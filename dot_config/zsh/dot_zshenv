@@ -1,0 +1,11 @@
+# ============================================================================
+# .zshenv - Zsh Environment Variables (ZDOTDIR)
+# ============================================================================
+# This file is sourced from ~/.zshenv after XDG variables are set.
+# ============================================================================
+
+# History file location (XDG compliant)
+export HISTFILE="${ZDOTDIR}/.zsh_history"
+
+# Cargo (Rust)
+[[ -f "${HOME}/.cargo/env" ]] && source "${HOME}/.cargo/env"

@@ -1,0 +1,15 @@
+# ~/.zshenv - Bootstrap only
+# This is the only dotfile in the home directory.
+# All other configurations are in ~/.config/
+
+# XDG Base Directory Specification
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_STATE_HOME="${HOME}/.local/state"
+
+# Set ZDOTDIR to use ~/.config/zsh for zsh configuration
+export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+
+# Source the actual .zshenv from ZDOTDIR
+[[ -f "${ZDOTDIR}/.zshenv" ]] && source "${ZDOTDIR}/.zshenv"
