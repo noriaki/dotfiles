@@ -1,0 +1,23 @@
+# chezmoi ignore file
+# Files and directories listed here will not be managed by chezmoi
+
+# README and documentation (for repository only)
+README.md
+LICENSE
+
+# Secrets - never include in dotfiles
+.ssh/id_*
+.ssh/*.pem
+.config/gh/hosts.yml
+.netrc
+.aws/credentials
+.config/gcloud/
+
+# OS-specific ignores
+{{- if eq .chezmoi.os "darwin" }}
+# Ignore Linux-specific files on macOS
+{{- else if eq .chezmoi.os "linux" }}
+# Ignore macOS-specific files on Linux
+.config/karabiner/
+.config/linearmouse/
+{{- end }}

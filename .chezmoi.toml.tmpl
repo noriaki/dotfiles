@@ -1,0 +1,27 @@
+# chezmoi configuration
+# This file is a template that will be processed by chezmoi
+
+[data]
+  name = "UCHIYAMA Noriaki"
+  email = "uchiyama.noriaki+git@gmail.com"
+
+{{- if eq .chezmoi.os "darwin" }}
+  {{- if eq .chezmoi.arch "arm64" }}
+  # Apple Silicon Mac (M1/M2/M3)
+  homebrew_prefix = "/opt/homebrew"
+  {{- else }}
+  # Intel Mac
+  homebrew_prefix = "/usr/local"
+  {{- end }}
+  is_macos = true
+  is_linux = false
+{{- else if eq .chezmoi.os "linux" }}
+  # Linux (including WSL2)
+  homebrew_prefix = "/home/linuxbrew/.linuxbrew"
+  is_macos = false
+  is_linux = true
+{{- end }}
+
+[edit]
+  command = "code"
+  args = ["--wait"]
