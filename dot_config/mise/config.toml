@@ -18,9 +18,6 @@ trusted_config_paths = ["~"]
 # Legacy version file support (.node-version, .ruby-version, etc.)
 legacy_version_file = true
 
-# Disable default shims in favor of mise activate
-shims_dir = "~/.local/share/mise/shims"
-
 [tools]
 # Default tool versions (can be overridden per-project with .mise.toml)
 # Uncomment and adjust versions as needed after initial setup
