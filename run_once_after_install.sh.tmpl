@@ -26,7 +26,7 @@ BREWFILE="${HOME}/.config/Brewfile"
 
 if [[ -f "${BREWFILE}" ]]; then
     echo "Installing packages from Brewfile..."
-    brew bundle --file="${BREWFILE}" --no-lock
+    brew bundle --file="${BREWFILE}"
 else
     echo "Warning: Brewfile not found at ${BREWFILE}"
 fi
