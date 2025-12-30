@@ -12,21 +12,15 @@ brew "mise"
 # Compression
 brew "xz"
 
-# Cloud
-brew "awscli"
-
 # Development tools
 brew "emscripten"
-brew "ffmpeg"
 brew "gh"
 brew "git"
 brew "git-flow"
 brew "groff"
 brew "pkgconf"
-brew "rust"
 brew "tig"
 brew "tree"
-brew "wabt"
 
 # Shell
 brew "starship"
@@ -56,16 +50,6 @@ cask "maccy"
 # Development
 cask "iterm2"
 cask "visual-studio-code"
-cask "ngrok"
-
-# AI
-cask "chatgpt"
-cask "claude"
-
-# Productivity
-cask "google-drive"
-cask "miro"
-cask "smoothcsv"
 
 # Fonts
 cask "font-plemol-jp-nf"
@@ -77,5 +61,4 @@ cask "font-plemol-jp-nf"
 {{- if .is_macos }}
 
 mas "Amphetamine", id: 937984704
-mas "Xcode", id: 497799835
 {{- end }}
