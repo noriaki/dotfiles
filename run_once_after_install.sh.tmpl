@@ -42,6 +42,24 @@ else
     echo "Warning: mise not found. Install it via 'brew install mise'"
 fi
 
+# -----------------------------------------------------------------------------
+# Install global npm packages
+# Using npm directly instead of mise npm backend (workaround for timeout issues)
+# See: https://github.com/jdx/mise/discussions/4652
+# -----------------------------------------------------------------------------
+if command -v mise &> /dev/null; then
+    echo "Installing global npm packages..."
+    eval "$(mise activate bash)"
+
+    if command -v npm &> /dev/null; then
+        npm install -g pnpm @anthropic-ai/claude-code || {
+            echo "Warning: Failed to install some npm packages"
+        }
+    else
+        echo "Warning: npm not found. Skipping global package installation."
+    fi
+fi
+
 echo "=== Post-install setup complete ==="
 echo ""
 echo "Please restart your shell: exec zsh"

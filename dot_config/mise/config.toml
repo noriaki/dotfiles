@@ -22,10 +22,10 @@ legacy_version_file = true
 # Default tool versions (can be overridden per-project with .mise.toml)
 # Uncomment and adjust versions as needed after initial setup
 
-# node = "lts"
+node = "lts"
 # python = "3.12"
 # ruby = "3.3"
 
-# Global npm packages (managed via npm backend)
-"npm:pnpm" = "latest"
-"npm:@anthropic-ai/claude-code" = "latest"
+# Global npm packages are installed via `npm install -g` in the install script
+# instead of mise npm backend (workaround for timeout issues)
+# See: https://github.com/jdx/mise/discussions/4652
